@@ -6,7 +6,7 @@
       </template>
       <v-card>
         <div class="closeBtn pt-3">
-          <v-btn @click="dialog = false" text>
+          <v-btn @click="close" text>
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </div>
@@ -15,13 +15,12 @@
           <span class="loginTitle">로그인</span>
         </v-card-title>
         <v-card-text>
-          <v-form>
+          <v-form ref="form" v-model="valid">
             <v-container>
               <v-text-field
-                v-model="email"
-                :rules="emailRules"
+                v-model="id"
+                :rules="idRules"
                 label="아이디"
-                type="email"
                 required
                 outlined
                 clearable
@@ -51,12 +50,16 @@
                   아이디 / 비밀번호 찾기
                 </v-col>
               </v-row>
-              <v-btn class="submitBtn" color="purple darken-2" type="submit"
+              <v-btn
+                :disabled="!valid"
+                class="submitBtn"
+                color="purple darken-2"
+                type="submit"
                 >로그인</v-btn
               >
               <div class="signup mt-5">
-                아직 회원이 아니신가요?
-                <nuxt-link to="signup">회원가입</nuxt-link>
+                이미 회원이신가요?
+                <signup-form @click="close" class="signupBtn ml-0" />
               </div>
             </v-container>
           </v-form>
@@ -67,10 +70,25 @@
 </template>
 
 <script>
+import SignupForm from './SignupForm'
+
 export default {
+  components: {
+    SignupForm
+  },
   data() {
     return {
-      dialog: false
+      dialog: false,
+      vaild: false,
+      id: '',
+      password: '',
+      idRules: [(v) => !!v || '아이디를 입력해주세요.'],
+      passwordRules: [(v) => !!v || '비밀번호를 입력해주세요.']
+    }
+  },
+  methods: {
+    close() {
+      this.dialog = false
     }
   }
 }
@@ -100,7 +118,7 @@ export default {
   text-align: center;
 }
 
-.loginMargin {
-  margin-top: 1px;
+.signupBtn {
+  display: inline;
 }
 </style>

@@ -29,10 +29,8 @@
         </ul>
       </v-col>
       <v-col class="d-flex justify-end">
-        <span class="hidden-sm-and-down"><login-form /></span>
-        <span class="hidden-sm-and-down ml-5"
-          ><nuxt-link to="signup">회원가입</nuxt-link></span
-        >
+        <span class="hidden-sm-and-down mr-5"><login-form /></span>
+        <span class="hidden-sm-and-down ml-5"><signup-form /></span>
       </v-col>
       <v-col class="hidden-md-and-up">
         <span class="d-flex justify-end">모바일</span>
@@ -43,10 +41,12 @@
 
 <script>
 import LoginForm from '@/components/Loginform'
+import SignupForm from '@/components/SignupForm'
 
 export default {
   components: {
-    LoginForm
+    LoginForm,
+    SignupForm
   },
   data() {
     return {
