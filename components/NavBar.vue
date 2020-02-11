@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import LoginForm from '@/components/Loginform'
-import SignupForm from '@/components/SignupForm'
+import LoginForm from './Loginform'
+import SignupForm from './SignupForm'
 
 export default {
   components: {
