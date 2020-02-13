@@ -12,8 +12,8 @@
             <span>② 의뢰자 회원가입</span>
           </div>
           <v-text-field
-            v-model="id"
-            :rules="idRules"
+            v-model="userid"
+            :rules="useridRules"
             label="아이디"
             required
             outlined
@@ -110,12 +110,13 @@ export default {
   data() {
     return {
       valid: false,
-      id: '',
+      userid: '',
+      usertype: 'requester',
       password: '',
       passwordChk: '',
       name: '정윤',
       phone: '01012345678',
-      idRules: [(v) => !!v || '아이디를 입력해주세요.'],
+      useridRules: [(v) => !!v || '아이디를 입력해주세요.'],
       passwordRules: [(v) => !!v || '비밀번호를 입력해주세요.'],
       passwordChkRules: [
         (v) => !!v || '비밀번호 확인을 입력해주세요.',
@@ -132,7 +133,8 @@ export default {
     onSubmitForm() {
       if (this.$refs.form.validate()) {
         this.$store.dispatch('users/signup', {
-          id: this.id,
+          userid: this.userid,
+          usertype: this.usertype,
           password: this.password,
           name: this.name,
           phone: this.phone,
@@ -148,7 +150,8 @@ export default {
     return {
       title: '회원가입'
     }
-  }
+  },
+  middleware: 'anonymous'
 }
 </script>
 

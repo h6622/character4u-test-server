@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import LoginForm from './LoginForm'
+import LoginForm from '@/components/LoginForm'
 
 export default {
   components: {

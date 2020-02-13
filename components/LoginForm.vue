@@ -15,11 +15,11 @@
           <span class="loginTitle">로그인</span>
         </v-card-title>
         <v-card-text>
-          <v-form ref="form" v-model="valid">
+          <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
             <v-container>
               <v-text-field
-                v-model="id"
-                :rules="idRules"
+                v-model="userid"
+                :rules="useridRules"
                 label="아이디"
                 required
                 outlined
@@ -70,7 +70,7 @@
 </template>
 
 <script>
-import SignupForm from './SignupForm'
+import SignupForm from '@/components/SignupForm'
 
 export default {
   components: {
@@ -80,15 +80,35 @@ export default {
     return {
       dialog: false,
       vaild: false,
-      id: '',
+      userid: '',
       password: '',
-      idRules: [(v) => !!v || '아이디를 입력해주세요.'],
+      useridRules: [(v) => !!v || '아이디를 입력해주세요.'],
       passwordRules: [(v) => !!v || '비밀번호를 입력해주세요.']
     }
   },
   methods: {
     close() {
       this.dialog = false
+    },
+    onSubmitForm() {
+      if (this.$refs.form.validate()) {
+        this.$store
+          .dispatch('users/login', {
+            userid: this.userid,
+            password: this.password
+          })
+          .then(() => {
+            this.$router.push({
+              path: '/'
+            })
+            this.dialog = false
+          })
+          .catch(() => {
+            alert('로그인 실패')
+          })
+      } else {
+        alert('폼이 유효하지 않습니다.')
+      }
     }
   }
 }

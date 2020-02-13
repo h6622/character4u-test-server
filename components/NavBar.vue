@@ -28,9 +28,13 @@
           </li>
         </ul>
       </v-col>
-      <v-col class="d-flex justify-end">
+      <v-col v-if="!me" class="d-flex justify-end">
         <span class="hidden-sm-and-down mr-5"><login-form /></span>
         <span class="hidden-sm-and-down ml-5"><signup-form /></span>
+      </v-col>
+      <v-col v-else class="d-flex justify-end">
+        <span>{{ me.name }}님 환영합니다!</span>
+        <span><v-btn @click="onLogout">로그아웃</v-btn></span>
       </v-col>
       <v-col class="hidden-md-and-up">
         <span class="d-flex justify-end">모바일</span>
@@ -40,8 +44,8 @@
 </template>
 
 <script>
-import LoginForm from './Loginform'
-import SignupForm from './SignupForm'
+import LoginForm from '@/components/Loginform'
+import SignupForm from '@/components/SignupForm'
 
 export default {
   components: {
@@ -81,6 +85,16 @@ export default {
           ]
         }
       ]
+    }
+  },
+  computed: {
+    me() {
+      return this.$store.state.users.me
+    }
+  },
+  methods: {
+    onLogout() {
+      this.$store.dispatch('users/logout')
     }
   }
 }
