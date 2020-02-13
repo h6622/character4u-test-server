@@ -1,7 +1,24 @@
 <template>
-  <v-layout>
-    <v-flex>Hello Vue</v-flex>
-  </v-layout>
+  <div class="mainWidth">
+    <main-title />
+    <main-Recent />
+  </div>
 </template>
 
-<script></script>
+<script>
+import MainTitle from '@/components/main/MainTitle'
+import MainRecent from '@/components/main/MainRecent'
+
+export default {
+  components: {
+    MainTitle,
+    MainRecent
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.mainWidth {
+  width: 100%;
+}
+</style>

@@ -4,14 +4,3 @@
 // $font-size-root: 20px;
 
 $azure : #7823e6;
-
-a {
-    text-decoration: none;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    color: black;
-    &:hover,
-    &:focus {
-      color: $azure;
-    }
-}

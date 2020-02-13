@@ -123,4 +123,15 @@ ul {
   position: absolute;
   display: flex;
 }
+
+a {
+  text-decoration: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  color: black;
+  &:hover,
+  &:focus {
+    color: $azure;
+  }
+}
 </style>
