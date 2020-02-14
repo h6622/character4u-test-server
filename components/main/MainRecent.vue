@@ -66,7 +66,7 @@ a {
   font-size: 14px;
   font-weight: 500;
   line-height: 1.57;
-  color: #c5c5c5;
+  color: #c5c5c5 !important;
 }
 
 .clicked {
