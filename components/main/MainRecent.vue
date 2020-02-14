@@ -8,11 +8,17 @@
       <a>|</a>
       <a :class="highSort" @click="onClickHigh">높은 상금순</a>
     </div>
+    <main-recent-card></main-recent-card>
   </div>
 </template>
 
 <script>
+import MainRecentCard from '@/components/main/MainRecentCard'
+
 export default {
+  components: {
+    MainRecentCard
+  },
   data() {
     return {
       recentSort: 'clicked',
