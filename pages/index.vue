@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .mainWidth {
   width: 100%;
 }
