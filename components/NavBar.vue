@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import LoginForm from '~/components/Loginform'
-import SignupForm from '~/components/SignupForm'
+import LoginForm from '@/components/LoginForm'
+import SignupForm from '@/components/SignupForm'
 
 export default {
   components: {
