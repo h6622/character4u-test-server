@@ -1,6 +1,9 @@
 <template>
   <div class="mainRecentCard">
-    test
+    <div class="mainRecentLogoIcon">
+      <span>iamge</span>
+      <span>icon</span>
+    </div>
   </div>
 </template>
 
@@ -11,5 +14,10 @@
   border-radius: 5px;
   border: solid 1px #d8d8d8;
   background-color: #ffffff;
+}
+
+.mainRecentLogoIcon {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
