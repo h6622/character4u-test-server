@@ -14,9 +14,10 @@
 
 <style lang="scss" scoped>
 .bg {
-  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 500px;
+  background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(20, 20, 20, 0.5)),
+    url('~assets/images/main-bg.jpg');
 }
 
 .mainSubTitle {

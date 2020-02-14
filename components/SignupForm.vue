@@ -102,7 +102,7 @@ a {
   text-decoration: none;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 14px;
-  color: black !important;
+  color: black;
   &:hover,
   &:focus {
     color: $azure;
