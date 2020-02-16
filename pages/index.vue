@@ -1,5 +1,5 @@
 <template>
-  <div class="mainWidth">
+  <div class="containerWidth">
     <main-title />
     <main-Recent />
     <main-how />
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mainWidth {
+.containerWidth {
   width: 100%;
 }
 </style>

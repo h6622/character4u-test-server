@@ -15,7 +15,7 @@
             @mouseleave="onMouseLeave"
             class="pr-5 navMenu"
           >
-            <nuxt-link :to="item.title">
+            <nuxt-link :to="item.path">
               {{ item.title }}
             </nuxt-link>
           </li>
