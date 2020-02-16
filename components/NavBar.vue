@@ -1,38 +1,51 @@
 <template>
-  <div class="container">
-    <div class="navLogoItems">
-      <img
-        src="@/assets/images/gnb-logo.png"
-        alt="character4u"
-        class="navLogo"
-      />
-      <ul class="marginLeft">
-        <li v-for="item in menuItems" :key="item.path" class="pr-5 navMenu">
-          <nuxt-link :to="item.path">
-            {{ item.title }}
-          </nuxt-link>
-          <ul class="subItems">
-            <li
-              v-for="subItem in item.subItems"
-              :key="subItem.path"
-              class="pr-5 pt-3"
-            >
-              <nuxt-link :to="subItem.path">
-                {{ subItem.subTitle }}
-              </nuxt-link>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <div v-if="!me" class="navLogoItems">
-        <span><login-form /></span>
-        <span class="marginLeft"><signup-form /></span>
+  <div>
+    <div class="container">
+      <div class="navLogoItems">
+        <img
+          src="@/assets/images/gnb-logo.png"
+          alt="character4u"
+          class="navLogo"
+        />
+        <ul class="marginLeft">
+          <li
+            v-for="item in menuItems"
+            :key="item.path"
+            @mouseover="onMouseOver"
+            @mouseleave="onMouseLeave"
+            class="pr-5 navMenu"
+          >
+            <nuxt-link :to="item.title">
+              {{ item.title }}
+            </nuxt-link>
+          </li>
+        </ul>
       </div>
-      <div v-else>
-        <span>{{ me.name }}님 환영합니다!</span>
-        <span><v-btn @click="onLogout">로그아웃</v-btn></span>
+      <div class="navLoginMargin">
+        <div v-if="!me" class="navLogoItems">
+          <span><login-form /></span>
+          <span class="marginLeft"><signup-form /></span>
+        </div>
+        <div v-else>
+          <span>{{ me.name }}님 환영합니다!</span>
+          <span><v-btn @click="onLogout">로그아웃</v-btn></span>
+        </div>
+      </div>
+    </div>
+    <div v-if="hovered" class="navSub">
+      <div class="navSubItems">
+        <div class="navSubGap"></div>
+        <ul class="marginLeft">
+          <li
+            v-for="item in menuItems"
+            :key="item.path"
+            class="pr-5 navSubMenu"
+          >
+            <nuxt-link :to="item.path">
+              {{ item.title }}
+            </nuxt-link>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -79,7 +92,8 @@ export default {
             { subTitle: '공지사항', path: '/notice' }
           ]
         }
-      ]
+      ],
+      hovered: false
     }
   },
   computed: {
@@ -90,6 +104,13 @@ export default {
   methods: {
     onLogout() {
       this.$store.dispatch('users/logout')
+    },
+    onMouseOver() {
+      this.hovered = true
+      console.log(this.$refs.cc)
+    },
+    onMouseLeave() {
+      this.hovered = false
     }
   }
 }
@@ -100,7 +121,7 @@ export default {
   left: 0;
   right: 0;
   margin: 0 auto;
-  padding: 25px 0;
+  padding: 0;
   width: 1610px;
   height: 70px;
   display: flex;
@@ -114,6 +135,7 @@ export default {
 .navLogo {
   width: 120px;
   height: 20px;
+  margin-top: 25px;
 }
 
 ul {
@@ -124,14 +146,8 @@ ul {
   }
 }
 
-.subItems {
-  position: absolute;
-  display: none;
-}
-
-.navMenu:hover .subItems {
-  position: absolute;
-  display: flex;
+.navMenu {
+  padding: 25px 0;
 }
 
 a {
@@ -149,7 +165,30 @@ a {
   margin-left: 40px;
 }
 
-.test {
-  padding-right: 500px;
+.navSubGap {
+  width: 120px;
+  height: 20px;
+}
+
+.navSub {
+  position: absolute;
+  background-color: #f7f7f7;
+  opacity: 0.5;
+  width: 100%;
+  height: 46px;
+}
+
+.navSubItems {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding-top: 10px;
+  width: 1610px;
+  height: 70px;
+  display: flex;
+}
+
+.navLoginMargin {
+  margin-top: 25px;
 }
 </style>
