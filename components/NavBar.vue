@@ -107,7 +107,6 @@ export default {
     },
     onMouseOver() {
       this.hovered = true
-      console.log(this.$refs.cc)
     },
     onMouseLeave() {
       this.hovered = false

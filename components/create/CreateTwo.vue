@@ -124,7 +124,7 @@ export default {
   width: 400px;
   left: 0;
   right: 0;
-  margin: 0 auto 427px auto;
+  margin: 0 auto 101px auto;
 }
 
 .createStep {

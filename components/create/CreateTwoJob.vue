@@ -1,5 +1,5 @@
 <template>
-  <a @click="onClick" class="createJob" :class="clicked">{{ category }}</a>
+  <a @click="onClick" :class="clicked" class="createJob">{{ category }}</a>
 </template>
 
 <script>
