@@ -8,7 +8,24 @@
       <a>|</a>
       <a :class="highSort" @click="onClickHigh">높은 상금순</a>
     </div>
-    <main-recent-card></main-recent-card>
+    <div class="mainRecentLists">
+      <main-recent-card />
+      <main-recent-card class="marginLeft" />
+      <main-recent-card class="marginLeft" />
+    </div>
+    <div class="mainRecentLists  marginTop">
+      <main-recent-card />
+      <main-recent-card class="marginLeft" />
+      <main-recent-card class="marginLeft" />
+    </div>
+    <div class="mainRecentLists  marginTop">
+      <main-recent-card />
+      <main-recent-card class="marginLeft" />
+      <main-recent-card class="marginLeft" />
+    </div>
+    <div class="btnMargin">
+      <button class="mainRecentBtn">모든 공모전 보기</button>
+    </div>
   </div>
 </template>
 
@@ -44,7 +61,6 @@ export default {
 
 <style lang="scss" scoped>
 .mainRecentMargin {
-  position: fixed;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -64,6 +80,7 @@ export default {
 .mainRecentSort {
   text-align: right;
   margin-top: 40px;
+  margin-bottom: 24px;
 }
 
 a {
@@ -77,5 +94,38 @@ a {
 
 .clicked {
   color: $azure;
+}
+
+.mainRecentLists {
+  display: flex;
+  justify-content: center;
+}
+
+.marginLeft {
+  margin-left: 16px;
+}
+
+.marginTop {
+  margin-top: 16px;
+}
+
+.btnMargin {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.mainRecentBtn {
+  width: 240px;
+  height: 50px;
+  border-radius: 5px;
+  border: solid 1px $azure;
+  background-color: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: $azure;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.57;
 }
 </style>
