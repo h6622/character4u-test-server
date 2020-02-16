@@ -64,4 +64,24 @@ export default {
 .marginTop {
   margin-top: 16px;
 }
+
+.btnMargin {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 106px;
+}
+
+.mainWinBtn {
+  width: 240px;
+  height: 50px;
+  border-radius: 5px;
+  border: solid 1px $azure;
+  background-color: #ffffff;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: $azure;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.57;
+}
 </style>
