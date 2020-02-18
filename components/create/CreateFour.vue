@@ -3,74 +3,61 @@
     <div class="progressBar">
       <div class="progress"></div>
     </div>
-    <div class="createContent">
-      <h2 class="createStep">{{ step }}/6단계</h2>
-      <h1 class="createTitle">상세 공모전 내용을 입력해주세요</h1>
-      <div class="createDesc">
-        디자이너가 좋은 디자인을 만들기 위해서는<br />
-        자세한 설명이 필요합니다. 가능한 많은 디자이너의<br />
-        참여를 유도하기 위해 최대한 자세히 적어주세요.
-      </div>
-      <div class="createInputMargin">
-        <div class="createInputLabel">공모전 제목</div>
-        <input
-          v-model="competitionName"
-          type="text"
-          class="createInput"
-          placeholder="예: 캐릭터포유 시그니쳐 캐릭터 공모전"
-        />
-      </div>
-      <div class="createInputMargin">
-        <div class="createInputLabel">공모전 진행 기간</div>
-        <date-picker
-          v-model="startDate"
-          class="createDate"
-          placeholder="시작일 선택"
-        />
-        <date-picker
-          v-model="startDate"
-          type="text"
-          class="createDateEnd"
-          placeholder="종료일"
-          disabled
-        />
-        <div class="createWarning">
-          <img
-            src="@/assets/images/icn-warning.png"
-            class="createWarningIcon"
+    <div class="createContent d-flex">
+      <div class="createGap"></div>
+      <div class="createContainer">
+        <h2 class="createStep">{{ step }}/6단계</h2>
+        <h1 class="createTitle">공모전 옵션 및 상금 설정</h1>
+        <div class="createDesc">
+          원하는 패키지를 선택하세요
+        </div>
+        <div class="createInputMargin">
+          <div class="createInputLabel">기본 옵션</div>
+          <div class="createRadioBox">
+            <v-radio-group class="ma-0">
+              <v-radio color="azure" class="createRadio">
+                <template v-slot:label>
+                  <div class="createRadioLabel">
+                    캐릭터포유 공모전 등록비 10만원
+                  </div>
+                </template>
+              </v-radio>
+            </v-radio-group>
+          </div>
+        </div>
+        <div>
+          <div class="createInputLabel">공모전 패키지 옵션</div>
+          <v-radio-group>
+            <div class="d-flex createMarginBottom">
+              <create-four-card grade="premium" />
+              <create-four-card grade="gold" class="createMarginLeft" />
+            </div>
+            <div class="d-flex">
+              <create-four-card grade="silver" />
+              <create-four-card grade="bronze" class="createMarginLeft" />
+            </div>
+          </v-radio-group>
+        </div>
+        <div class="createInputMargin">
+          <div class="createInputLabel createInputRewardMB">1위 상금 입력</div>
+          <div class="createInputDesc">
+            상금이 높은 순서대로 리스트 상단에 노출되며, 디자이너의 참여도가
+            올라갑니다.
+          </div>
+          <input
+            v-model="reward"
+            type="text"
+            class="createInput"
+            placeholder="예: 1,000,000"
           />
-          <div class="createWarningMsg">
-            공모전은 진행 기간은 기본 일주일이며, 연장을 원할시 다음페이지에서
-            기간 연장 옵션을 선택해주세요.
+          <div class="createInputRank">
+            현재 상금기준 예상 노출 순위:
+            <span class="fontAzure"> {N}번째 </span> / 총 {110}개
           </div>
         </div>
       </div>
-      <div class="createInputMargin">
-        <div class="createInputLabel">공모전 상세정보</div>
-        <textarea
-          v-model="companyComment"
-          type="text"
-          class="createTextarea"
-          placeholder="좋은 디자인을 얻기 위해 가장 중요한 부분입니다. 고객님의 설명이 세부적이고 명확할수록  마음에 꼭 드는 디자인을 받아보실 확률이 높아지므로, 최대한 자세히 작성해주세요. 상세설명은 공모전 개최 후 3일간 수정이 가능합니다."
-        />
-      </div>
-      <div class="createInputMargin">
-        <div class="createInputLabel">참고 자료</div>
-        <div class="createFileDesc">
-          디자이너들이 참고할 수 있는 이미지 등을 업로드해 주세요. 첨부파일은
-          .zip 형태로 압축해서 업로드하시길 권장합니다. 개별 파일의 용량은 최대
-          20M이며 6개까지 업로드 가능합니다.
-        </div>
-      </div>
-      <div class="createBorder" />
-      <div class="createFilebox">
-        <input
-          class="uploadName"
-          value="선택된 파일 없음"
-          disabled="disabled"
-        />
-        <label for="createFile">파일선택</label>
-        <input id="createFile" type="file" />
+      <div class="createGap">
+        <create-four-float />
       </div>
     </div>
     <div class="createBorder"></div>
@@ -80,7 +67,7 @@
       <a
         v-if="step !== 6"
         @click="onClickNext"
-        :class="competitionName && startDate ? '' : 'disabled'"
+        :class="reward ? '' : 'disabled'"
         class="createNextBtn"
         >다음</a
       >
@@ -90,15 +77,18 @@
 </template>
 
 <script>
-import DatePicker from 'vue2-datepicker'
-import 'vue2-datepicker/index.css'
+import CreateFourCard from '@/components/create/CreateFourCard'
+import CreateFourFloat from '@/components/create/CreateFourFloat'
 
 export default {
-  components: { DatePicker },
+  components: {
+    CreateFourCard,
+    CreateFourFloat
+  },
   data() {
     return {
-      competitionName: '',
-      startDate: ''
+      defaultOption: '캐릭터 포유 공모전 등록비 10만원',
+      reward: ''
     }
   },
   computed: {
@@ -125,16 +115,24 @@ export default {
 }
 
 .progress {
-  width: 40%;
+  width: 60%;
   height: 8px;
   background-color: $azure;
 }
 
 .createContent {
-  width: 400px;
+  width: 960px;
   left: 0;
   right: 0;
   margin: 0 auto 35px auto;
+}
+
+.createContainer {
+  width: 400px;
+}
+
+.createGap {
+  width: 280px;
 }
 
 .createStep {
@@ -179,6 +177,10 @@ export default {
   line-height: 1.29;
 }
 
+.createInputRewardMB {
+  margin-bottom: 4px;
+}
+
 .createInput {
   width: 100%;
   height: 46px;
@@ -189,6 +191,7 @@ export default {
   font-size: 14px;
   color: #222222;
   padding: 11px 0 15px 17px;
+  margin-bottom: 8px;
 }
 
 .createBorder {
@@ -230,41 +233,8 @@ export default {
   padding: 14px 84px 16px 84px;
 }
 
-.createDate {
-  width: 196px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px;
-}
-
-.createDateEnd {
-  width: 196px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 14px;
-}
-
 ::placeholder {
   color: #c5c5c5;
-}
-
-.createWarningIcon {
-  width: 24px;
-  height: 24px;
-  margin-left: 8px;
-}
-
-.createWarning {
-  display: flex;
-  margin-top: 5px;
-}
-
-.createWarningMsg {
-  width: 356px;
-  height: 36px;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #aaaaaa;
-  margin-left: 4px;
 }
 
 .createTextarea {
@@ -333,5 +303,54 @@ export default {
 .disabled {
   background-color: #d8d8d8;
   pointer-events: none;
+}
+
+.defaultOption {
+  pointer-events: none;
+}
+
+.createRadioBox {
+  width: 400px;
+  height: 46px;
+  border-radius: 5px;
+  border: solid 1px $azure;
+  background-color: #ffffff;
+}
+
+.createRadio {
+  padding-top: 8px;
+  padding-left: 16px;
+}
+
+.createRadioLabel {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.29;
+  color: #222222;
+}
+
+.createMarginBottom {
+  margin-bottom: 8px;
+}
+
+.createMarginLeft {
+  margin-left: 8px;
+}
+
+.createInputDesc {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #aaaaaa;
+  margin-bottom: 11px;
+}
+
+.createInputRank {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #666666;
+  margin-bottom: 11px;
+  text-align: right;
 }
 </style>
