@@ -79,7 +79,7 @@ export default {
   data() {
     return {
       dialog: false,
-      vaild: false,
+      valid: false,
       userid: '',
       password: '',
       useridRules: [(v) => !!v || '아이디를 입력해주세요.'],
