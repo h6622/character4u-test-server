@@ -5,6 +5,19 @@
 
 $azure : #7823e6;
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+button {
+    outline:none;
+}
+
+input:focus {
+    outline:none;
+}
+
 .fontAzure {
     color: $azure;
 }

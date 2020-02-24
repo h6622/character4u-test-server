@@ -2,11 +2,13 @@
   <div>
     <div class="container">
       <div class="navLogoItems">
-        <img
-          src="@/assets/images/gnb-logo.png"
-          alt="character4u"
-          class="navLogo"
-        />
+        <nuxt-link to="/">
+          <img
+            src="@/assets/images/gnb-logo.png"
+            alt="character4u"
+            class="navLogo"
+        /></nuxt-link>
+
         <ul class="marginLeft">
           <li
             v-for="item in menuItems"
