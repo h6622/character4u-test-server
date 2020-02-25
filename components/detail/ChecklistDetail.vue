@@ -108,7 +108,11 @@
           </v-checkbox>
         </div>
         <div>
-          <button :class="checked ? '' : 'disabled'" class="nextBtn">
+          <button
+            @click="onClick"
+            :class="checked ? '' : 'disabled'"
+            class="nextBtn"
+          >
             다음
           </button>
         </div>
@@ -122,6 +126,11 @@ export default {
   data() {
     return {
       checked: false
+    }
+  },
+  methods: {
+    onClick() {
+      this.$store.dispatch('detail/next')
     }
   }
 }

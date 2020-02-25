@@ -14,8 +14,26 @@ button {
     outline:none;
 }
 
-input:focus {
+.hInput {
+    width: 100%;
+    border-radius: 5px;
+    border: solid 1px #d8d8d8;
+    &:focus {
+        outline:none;
+        border:solid 1px $azure;
+    }
+}
+
+textarea {
+    width: 100%;
+    border-radius: 5px;
+    border: solid 1px #d8d8d8;
+    resize: none;
+}
+
+textarea:focus {
     outline:none;
+    border:solid 1px $azure;
 }
 
 .fontAzure {

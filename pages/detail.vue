@@ -1,43 +1,41 @@
 <template>
-  <div class="d-flex justify-center detailContainer">
-    <div class="gap"></div>
-    <div class="main">
-      <div>
-        <h1 class="title d-flex justify-center">공모전 제목/text박스가로300</h1>
-      </div>
-      <div class="d-flex justify-center">
-        <a :class="subTitle1" @click="onClick1" class="subTitleWidth"
-          >브리핑 보기</a
-        >
-        <a :class="subTitle2" @click="onClick2" class="subTitleWidth"
-          >참여작 보기({60})</a
-        >
-        <a :class="subTitle3" @click="onClick3" class="subTitleWidth"
-          >공모전 참여</a
-        >
-      </div>
-      <div v-if="selected === 'brief'">
-        <brief-detail />
-      </div>
-      <div v-if="selected === 'view'">view</div>
-      <div v-if="selected === 'join'">
-        <join-detail />
-      </div>
+  <div class="detailContainer">
+    <div>
+      <h1 class="title d-flex justify-center">공모전 제목/text박스가로300</h1>
     </div>
-    <div class="gap cardMargin"><detail-card /></div>
+    <div class="d-flex justify-center">
+      <a :class="subTitle1" @click="onClick1" class="subTitleWidth"
+        >브리핑 보기</a
+      >
+      <a :class="subTitle2" @click="onClick2" class="subTitleWidth"
+        >참여작 보기({60})</a
+      >
+      <a :class="subTitle3" @click="onClick3" class="subTitleWidth"
+        >공모전 참여</a
+      >
+    </div>
+    <div v-if="selected === 'brief'">
+      <brief-detail />
+    </div>
+    <div v-if="selected === 'view'">
+      <view-detail />
+    </div>
+    <div v-if="selected === 'join'">
+      <join-detail />
+    </div>
   </div>
 </template>
 
 <script>
 import JoinDetail from '@/components/detail/JoinDetail'
-import DetailCard from '@/components/detail/DetailCard'
 import BriefDetail from '@/components/detail/BriefDetail'
+import ViewDetail from '@/components/detail/ViewDetail'
 
 export default {
   components: {
     JoinDetail,
-    DetailCard,
-    BriefDetail
+    BriefDetail,
+    ViewDetail
   },
   data() {
     return {
@@ -115,7 +113,7 @@ export default {
 }
 
 .cardMargin {
+  margin-top: 90%;
   margin-left: 125px;
-  margin-top: 1324px;
 }
 </style>
