@@ -55,7 +55,7 @@
       />
     </div>
     <div class="MB32">
-      <div class="uLabel">상세작품 이미지</div>
+      <div class="uLabel">미리보기 이미지</div>
       <div class="ulDesc">
         작품을 대표할 수 있는 정사각형의 썸네일 이미지를 올려주세요.<br />
         기준사이즈 : 600x600px
@@ -72,7 +72,7 @@
       </div>
     </div>
     <div class="MB32">
-      <div class="uLabel">미리보기 이미지</div>
+      <div class="uLabel">상세작품 이미지</div>
       <div class="ulDesc">
         RGB 형식의 JPG업로드 l 최대 용량 10mb l 가로 최대 1024px, 세로 자유.<br />
         *파일명에 특수문자가 포함된 경우 업로드 되지 않을 수 있습니다.<br />
@@ -90,13 +90,7 @@
       </div>
     </div>
     <div class="MB16">
-      <div class="uLabel ">등록약관</div>
-      <div class="box MT8 d-flex justify-space-between">
-        <div class="uFont">등록약관 자세히 보기</div>
-        <div>
-          <img src="~assets/images/icn-chevron-right.png" alt="다음" />
-        </div>
-      </div>
+      <agree-dialog />
     </div>
     <v-checkbox v-model="checked" color="azure">
       <template v-slot:label>
@@ -115,7 +109,12 @@
 </template>
 
 <script>
+import AgreeDialog from '@/components/detail/AgreeDialog'
+
 export default {
+  components: {
+    AgreeDialog
+  },
   data() {
     return {
       checked: false

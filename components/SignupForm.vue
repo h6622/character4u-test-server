@@ -22,7 +22,7 @@
             <v-btn
               @click="close"
               class="submitBtn"
-              color="purple darken-2"
+              color="azure"
               to="signup_req"
               >의뢰자 회원가입</v-btn
             >
@@ -35,7 +35,7 @@
             <v-btn
               @click="close"
               class="submitBtn"
-              color="purple darken-2"
+              color="azure"
               to="signup_dsg"
               >디자이너 회원가입</v-btn
             >

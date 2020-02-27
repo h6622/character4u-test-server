@@ -81,8 +81,8 @@
         </div>
         <div class="checklistContent checklistMT">
           <span class="fontBold">3. </span>
-          우승작이 선정되지 않고 콘테스트가 종료되는 경우, 상금은 해당
-          콘테스트에 참여하신 모든 디자이너 분들께 고르게 배분됩니다.
+          우승작이 선정되지 않고 공모전가 종료되는 경우, 상금은 해당 공모전에
+          참여하신 모든 디자이너 분들께 고르게 배분됩니다.
         </div>
         <div class="checklistContent checklistMT">
           <span class="fontBold">4. </span>
@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     onClick() {
-      this.$store.dispatch('detail/next')
+      this.$store.commit('detail/next')
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <div class="sContain">
     <v-row>
       <v-col class="d-flex justify-center">
         <v-form ref="form" v-model="valid" @submit.prevent="onSubmitForm">
@@ -17,8 +17,9 @@
             label="아이디"
             required
             outlined
-            clearable
-            color="purple darken-2"
+            color="azure"
+            hide-details="auto"
+            class="MB16"
           />
           <v-text-field
             v-model="password"
@@ -28,7 +29,9 @@
             required
             outlined
             clearable
-            color="purple darken-2"
+            color="azure"
+            hide-details="auto"
+            class="MB16"
           />
           <v-text-field
             v-model="passwordChk"
@@ -38,19 +41,27 @@
             required
             outlined
             clearable
-            color="purple darken-2"
+            color="azure"
+            hide-details="auto"
+            class="MB16"
           />
           <v-text-field
             v-model="name"
             outlined
             readonly
+            color="azure"
             background-color="grey lighten-2"
+            hide-details="auto"
+            class="MB16"
           />
           <v-text-field
             v-model="phone"
             outlined
             readonly
+            color="azure"
             background-color="grey lighten-2"
+            hide-details="auto"
+            class="MB16"
           />
           <v-text-field
             v-model="company"
@@ -59,7 +70,9 @@
             required
             outlined
             clearable
-            color="purple darken-2"
+            color="azure"
+            hide-details="auto"
+            class="MB16"
           />
           <v-text-field
             v-model="email"
@@ -68,41 +81,36 @@
             required
             outlined
             clearable
-            color="purple darken-2"
+            color="azure"
             hide-details="auto"
+            class="MB8"
           />
-          <v-container
-            ><div class="grayText">
+          <div class="d-flex justify-center MB46">
+            <div class="grayText">
               <span class="bold">담당자 개인의 이메일 주소</span>로 가입을
-              진행해주세요.
-            </div>
-            <div class="grayText">
-              콘테스트 개최시 회사명을 별도로 입력할 수 있으며,
-            </div>
-            <div class="grayText">
+              진행해주세요.<br />
+              공모전 개최시 회사명을 별도로 입력할 수 있으며,<br />
               담당자의 개인정보는 공개되지 않습니다.
-            </div></v-container
-          >
-          <v-contianer class="my-1">
-            <div class="agreeText">
-              로그인/회원가입시
             </div>
+          </div>
+          <div class="MB16">
             <div class="agreeText">
+              로그인/회원가입시<br />
               <span class="underline">이용약관</span>,
               <span class="underline">개인정보처리방침</span>에 동의하게 됩니다.
             </div>
-          </v-contianer>
+          </div>
           <v-btn
             :disabled="!valid"
             class="submitBtn"
-            color="purple darken-2"
+            color="azure"
             type="submit"
             >동의하고 가입하기</v-btn
           >
         </v-form>
       </v-col>
     </v-row>
-  </v-layout>
+  </div>
 </template>
 
 <script>
@@ -199,5 +207,24 @@ export default {
   .underline {
     text-decoration: underline;
   }
+}
+
+.MB8 {
+  margin-bottom: 8px;
+}
+
+.MB16 {
+  margin-bottom: 16px;
+}
+
+.MB46 {
+  margin-bottom: 46px;
+}
+
+.sContain {
+  width: 400px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 }
 </style>

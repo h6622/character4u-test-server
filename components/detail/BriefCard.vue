@@ -121,7 +121,7 @@ export default {
 
 .star {
   position: absolute;
-  top: 6px;
+  top: 12px;
   left: 366px;
 }
 

@@ -23,6 +23,9 @@
     <div v-if="selected === 'join'">
       <join-detail />
     </div>
+    <div v-if="selected === 'choice'">
+      <detail-choice-first />
+    </div>
   </div>
 </template>
 
@@ -30,19 +33,25 @@
 import JoinDetail from '@/components/detail/JoinDetail'
 import BriefDetail from '@/components/detail/BriefDetail'
 import ViewDetail from '@/components/detail/ViewDetail'
+import DetailChoiceFirst from '@/components/detail/DetailChoiceFirst'
 
 export default {
   components: {
     JoinDetail,
     BriefDetail,
-    ViewDetail
+    ViewDetail,
+    DetailChoiceFirst
   },
   data() {
     return {
       subTitle1: 'selected',
       subTitle2: 'deselected',
-      subTitle3: 'deselected',
-      selected: 'brief'
+      subTitle3: 'deselected'
+    }
+  },
+  computed: {
+    selected() {
+      return this.$store.state.detail.selected
     }
   },
   methods: {
@@ -50,19 +59,19 @@ export default {
       this.subTitle1 = 'selected'
       this.subTitle2 = 'deselected'
       this.subTitle3 = 'deselected'
-      this.selected = 'brief'
+      this.$store.commit('detail/brief')
     },
     onClick2() {
       this.subTitle1 = 'deselected'
       this.subTitle2 = 'selected'
       this.subTitle3 = 'deselected'
-      this.selected = 'view'
+      this.$store.commit('detail/view')
     },
     onClick3() {
       this.subTitle1 = 'deselected'
       this.subTitle2 = 'deselected'
       this.subTitle3 = 'selected'
-      this.selected = 'join'
+      this.$store.commit('detail/join')
     }
   }
 }

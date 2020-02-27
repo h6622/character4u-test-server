@@ -60,36 +60,22 @@
       </div>
     </div>
     <div class="carousel d-flex justify-center">
-      <div @click="onClickPrev">이전</div>
-      <div
-        @click="onClickNum"
-        v-for="i in pages"
-        :key="i.page"
-        :class="i.clicked"
-        class="carNum d-flex justify-center"
-      >
-        {{ i.page }}
-      </div>
-      <div @click="onClickNext">다음</div>
+      <page-component />
     </div>
   </div>
 </template>
 
 <script>
+import PageComponent from '@/components/PageComponent'
+
 export default {
+  components: {
+    PageComponent
+  },
   data() {
     return {
       clicked: '#F0F0F0',
-      items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      pages: [
-        { page: 1, clicked: 'clickNum' },
-        { page: 2, clicked: '' },
-        { page: 3, clicked: '' },
-        { page: 4, clicked: '' },
-        { page: 5, clicked: '' },
-        { page: 6, clicked: '' }
-      ],
-      clickPage: 1
+      items: [1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
   },
   methods: {

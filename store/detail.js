@@ -1,15 +1,22 @@
 export const state = () => ({
-  page: 'checklist'
+  page: 'checklist',
+  selected: 'brief'
 })
 
 export const mutations = {
   next(state) {
     state.page = 'join'
-  }
-}
-
-export const actions = {
-  next({ commit }) {
-    commit('next')
+  },
+  brief(state) {
+    state.selected = 'brief'
+  },
+  view(state) {
+    state.selected = 'view'
+  },
+  join(state) {
+    state.selected = 'join'
+  },
+  choice(state) {
+    state.selected = 'choice'
   }
 }

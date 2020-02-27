@@ -24,7 +24,7 @@
                 required
                 outlined
                 clearable
-                color="purple darken-2"
+                color="azure"
               />
               <v-text-field
                 v-model="password"
@@ -34,7 +34,7 @@
                 required
                 outlined
                 clearable
-                color="purple darken-2"
+                color="azure"
                 hide-details="auto"
               />
               <v-row>
@@ -53,7 +53,7 @@
               <v-btn
                 :disabled="!valid"
                 class="submitBtn"
-                color="purple darken-2"
+                color="azure"
                 type="submit"
                 >로그인</v-btn
               >
