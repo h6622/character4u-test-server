@@ -18,7 +18,7 @@
       <div class="term d-flex justify-center boardFont FW500">기간</div>
       <div class="save d-flex justify-center boardFont FW500">저장</div>
     </div>
-    <div v-for="i in items" :key="i" class="boardContent d-flex">
+    <div v-for="i in items" :key="i.index" class="boardContent d-flex">
       <div class="logo d-flex justify-center align-center">
         <div class="comLogo" />
       </div>
@@ -26,7 +26,9 @@
         에이프릴스톤
       </div>
       <div class="comTitle d-flex justify-center align-center boardFont CBlack">
-        [공기업/기관] ‘토스터기 형태의 무선충전+살균기’ 제품 디자인 공모전…
+        <nuxt-link to="/detail" class="ctText">
+          [공기업/기관] ‘토스터기 형태의 무선충전+살균기’ 제품 디자인 공모전…
+        </nuxt-link>
       </div>
       <div class="views d-flex justify-center align-center boardFont">
         {1,000}
@@ -45,14 +47,14 @@
       </div>
       <div class="save d-flex justify-center align-center">
         <svg
-          @click="onClickIcon"
+          @click="onClickIcon(i.index)"
           xmlns="http://www.w3.org/2000/svg"
           width="17"
           height="17"
           viewBox="0 0 17 17"
         >
           <path
-            :fill="clicked"
+            :fill="i.clicked"
             fill-rule="evenodd"
             d="M8.5 14.096L3.247 17l1.003-6.15L0 6.492l5.873-.897L8.5 0l2.627 5.596L17 6.493l-4.25 4.356L13.753 17z"
           />
@@ -74,16 +76,25 @@ export default {
   },
   data() {
     return {
-      clicked: '#F0F0F0',
-      items: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      items: [
+        { index: 0, clicked: '#F0F0F0' },
+        { index: 1, clicked: '#F0F0F0' },
+        { index: 2, clicked: '#F0F0F0' },
+        { index: 3, clicked: '#F0F0F0' },
+        { index: 4, clicked: '#F0F0F0' },
+        { index: 5, clicked: '#F0F0F0' },
+        { index: 6, clicked: '#F0F0F0' },
+        { index: 7, clicked: '#F0F0F0' },
+        { index: 8, clicked: '#F0F0F0' }
+      ]
     }
   },
   methods: {
-    onClickIcon() {
-      if (this.clicked === '#F0F0F0') {
-        this.clicked = '#8241fa'
+    onClickIcon(i) {
+      if (this.items[i].clicked === '#F0F0F0') {
+        this.items[i].clicked = '#8241fa'
       } else {
-        this.clicked = '#F0F0F0'
+        this.items[i].clicked = '#F0F0F0'
       }
     }
   }
@@ -199,5 +210,9 @@ export default {
 .clickNum {
   color: $azure;
   font-weight: bold;
+}
+
+.ctText:hover {
+  color: $azure;
 }
 </style>

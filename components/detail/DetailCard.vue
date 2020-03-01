@@ -193,7 +193,7 @@ export default {
   font-weight: bold;
   color: #222222;
   line-height: 1.33;
-  width: 200px;
+  width: 268px;
   margin-left: 24px;
   margin-bottom: 8px;
 }

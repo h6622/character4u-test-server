@@ -22,10 +22,10 @@ export default {
     return {
       pages: [
         { page: 1, clicked: 'clicked' },
-        { page: 2, clicked: '' },
-        { page: 3, clicked: '' },
-        { page: 4, clicked: '' },
-        { page: 5, clicked: '' }
+        { page: 2, clicked: 'noClick' },
+        { page: 3, clicked: 'noClick' },
+        { page: 4, clicked: 'noClick' },
+        { page: 5, clicked: 'noClick' }
       ],
       clickedNum: 1
     }
@@ -34,38 +34,38 @@ export default {
     onClickNum(i) {
       if (i === 1) {
         this.pages[0].clicked = 'clicked'
-        this.pages[1].clicked = ''
-        this.pages[2].clicked = ''
-        this.pages[3].clicked = ''
-        this.pages[4].clicked = ''
+        this.pages[1].clicked = 'noClick'
+        this.pages[2].clicked = 'noClick'
+        this.pages[3].clicked = 'noClick'
+        this.pages[4].clicked = 'noClick'
         this.clickedNum = 1
       } else if (i === 2) {
         this.pages[1].clicked = 'clicked'
-        this.pages[0].clicked = ''
-        this.pages[2].clicked = ''
-        this.pages[3].clicked = ''
-        this.pages[4].clicked = ''
+        this.pages[0].clicked = 'noClick'
+        this.pages[2].clicked = 'noClick'
+        this.pages[3].clicked = 'noClick'
+        this.pages[4].clicked = 'noClick'
         this.clickedNum = 2
       } else if (i === 3) {
         this.pages[2].clicked = 'clicked'
-        this.pages[0].clicked = ''
-        this.pages[1].clicked = ''
-        this.pages[3].clicked = ''
-        this.pages[4].clicked = ''
+        this.pages[0].clicked = 'noClick'
+        this.pages[1].clicked = 'noClick'
+        this.pages[3].clicked = 'noClick'
+        this.pages[4].clicked = 'noClick'
         this.clickedNum = 3
       } else if (i === 4) {
         this.pages[3].clicked = 'clicked'
-        this.pages[0].clicked = ''
-        this.pages[1].clicked = ''
-        this.pages[2].clicked = ''
-        this.pages[4].clicked = ''
+        this.pages[0].clicked = 'noClick'
+        this.pages[1].clicked = 'noClick'
+        this.pages[2].clicked = 'noClick'
+        this.pages[4].clicked = 'noClick'
         this.clickedNum = 4
       } else if (i === 5) {
         this.pages[4].clicked = 'clicked'
-        this.pages[0].clicked = ''
-        this.pages[1].clicked = ''
-        this.pages[2].clicked = ''
-        this.pages[3].clicked = ''
+        this.pages[0].clicked = 'noClick'
+        this.pages[1].clicked = 'noClick'
+        this.pages[2].clicked = 'noClick'
+        this.pages[3].clicked = 'noClick'
         this.clickedNum = 5
       }
     },
@@ -73,7 +73,7 @@ export default {
       if (this.clickedNum === 1) {
       } else {
         this.pages[this.clickedNum - 2].clicked = 'clicked'
-        this.pages[this.clickedNum - 1].clicked = ''
+        this.pages[this.clickedNum - 1].clicked = 'noClick'
         this.clickedNum--
       }
     },
@@ -81,7 +81,7 @@ export default {
       if (this.clickedNum === 5) {
       } else {
         this.pages[this.clickedNum].clicked = 'clicked'
-        this.pages[this.clickedNum - 1].clicked = ''
+        this.pages[this.clickedNum - 1].clicked = 'noClick'
         this.clickedNum++
       }
     }
@@ -95,7 +95,6 @@ export default {
 }
 
 .pageNum {
-  padding-top: 2px;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 12px;
   color: $azure;
@@ -112,5 +111,19 @@ export default {
   font-size: 12px;
   font-weight: bold;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noClick {
+  width: 24px;
+  height: 24px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

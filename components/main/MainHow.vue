@@ -1,48 +1,64 @@
 <template>
   <div class="bg">
-    <h1 class="mainHow">캐릭터 포유 이용방법</h1>
-    <div class="mainHowToggle">
-      <a :class="clickreq" @click="onClickReq">의뢰자</a>
-      <a :class="clickdsg" @click="onClickDsg" class="marginLeft">디자이너</a>
-    </div>
-    <div class="mainHowLists">
-      <main-how-card :step="step1" :title="title1" />
-      <main-how-card :step="step2" :title="title2" class="marginTop" />
-      <main-how-card :step="step3" :title="title3" />
+    <div class="mContain">
+      <div class="mTitle d-flex justify-center">
+        캐릭터포유 이용방법
+      </div>
+      <div class="mDesc d-flex justify-center">
+        캐릭터포유는 회원 유형(의뢰자, 디자이너)에 따라 이용방법이 다르므로 다음
+        안내를 자세히 살펴봐 주세요
+      </div>
+      <div class="mDesc d-flex justify-center">
+        <div
+          @click="onClickReq"
+          :class="selected === 'req' ? 'selected' : ''"
+          class="mBtn d-flex justify-center align-center"
+        >
+          의뢰자
+        </div>
+        <div
+          @click="onClickDsg"
+          :class="selected === 'dsg' ? 'selected' : ''"
+          class="mBtn d-flex justify-center align-center ML8"
+        >
+          디자이너
+        </div>
+      </div>
+      <div class="MT62">
+        <div v-if="selected === 'req'">
+          <htu-req />
+        </div>
+        <div v-if="selected === 'dsg'">
+          <htu-dsg />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import MainHowCard from '@/components/main/MainHowCard'
+import HtuReq from '@/components/main/HtuReq'
+import HtuDsg from '@/components/main/HtuDsg'
 
 export default {
   components: {
-    MainHowCard
+    HtuReq,
+    HtuDsg
   },
   data() {
     return {
-      clickreq: 'clicked',
-      clickdsg: 'disabled',
-      step1: 'STEP1',
-      step2: 'STEP2',
-      step3: 'STEP3',
-      title1: '공모전 개최',
-      title2: '공모전 참여작 모집',
-      title3: '1위 선정 및 상금 지급'
+      selected: 'req'
     }
   },
   methods: {
     onClickReq() {
-      if (this.clickdsg) {
-        this.clickreq = 'clicked'
-        this.clickdsg = 'disabled'
+      if (this.selected === 'dsg') {
+        this.selected = 'req'
       }
     },
     onClickDsg() {
-      if (this.clickreq) {
-        this.clickdsg = 'clicked'
-        this.clickreq = 'disabled'
+      if (this.selected === 'req') {
+        this.selected = 'dsg'
       }
     }
   }
@@ -52,9 +68,49 @@ export default {
 <style lang="scss" scoped>
 .bg {
   width: 100%;
-  height: 700px;
-  background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(20, 20, 20, 0.5)),
-    url('~assets/images/main-bg.jpg');
+  height: 600px;
+  background-color: #f7f7f7;
+}
+
+.mContain {
+  width: 1170px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.mTitle {
+  padding-top: 84px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #151515;
+}
+
+.mDesc {
+  margin-top: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: -0.25px;
+  color: #151515;
+}
+
+.mBtn {
+  width: 92px;
+  height: 30px;
+  border-radius: 3px;
+  border: solid 1px #aaaaaa;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.selected {
+  border: solid 1px $azure;
+  background-color: $azure;
+  font-weight: 500;
+  color: white;
 }
 
 .mainHow {

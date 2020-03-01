@@ -131,6 +131,7 @@ export default {
 }
 
 .gap {
+  position: relative;
   width: 441px;
 }
 
@@ -143,6 +144,8 @@ export default {
 }
 
 .dcMg {
-  margin-top: 1000px;
+  position: sticky;
+  top: 50%;
+  margin-left: 50px;
 }
 </style>

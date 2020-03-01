@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div v-if="hovered" class="navSub">
+    <!-- <div v-if="hovered" class="navSub">
       <div class="navSubItems">
         <div class="navSubGap"></div>
         <ul class="marginLeft">
@@ -49,7 +49,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

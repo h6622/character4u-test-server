@@ -147,9 +147,5 @@ a {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 14px;
   color: black !important;
-  &:hover,
-  &:focus {
-    color: $azure;
-  }
 }
 </style>

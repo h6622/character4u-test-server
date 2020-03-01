@@ -1,13 +1,19 @@
 <template>
   <div class="bg">
-    <h2 class="mainSubTitle">전문가 컨설팅까지 받는 신개념</h2>
-    <div class="mainTitleMargin">
-      <h2 class="mainTitle">캐릭터 공모전 플랫폼,</h2>
-      <h2 class="mainTitle">캐릭터포유</h2>
-    </div>
-    <div class="btnMargin">
-      <button class="outlinedBtn">공모전 개최하기</button>
-      <button class="flatBtn">공모전 모아보기</button>
+    <div class="mContain">
+      <div class="mTitle">
+        전문 에이전시 컨설팅까지 받는<br />
+        프리미엄 캐릭터 공모전 플랫폼
+      </div>
+      <div class="mDesc">
+        캐릭터 콘텐츠가 최고의 자산이 되는 시대! 여러분도 자신만의 캐릭터를
+        가지고 싶지 않으세요?<br />
+        지금 나만의 캐릭터 공모전을 열어보세요! 전문 에이전시가 함께합니다
+      </div>
+      <div class="mBtnBox">
+        <button class="flatBtn">공모전 개최하기</button>
+        <button class="outlinedBtn ML4">공모전 모아보기</button>
+      </div>
     </div>
   </div>
 </template>
@@ -15,9 +21,40 @@
 <style lang="scss" scoped>
 .bg {
   width: 100%;
-  height: 500px;
-  background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(20, 20, 20, 0.5)),
-    url('~assets/images/main-bg.jpg');
+  height: 418px;
+  /* background: linear-gradient(rgba(20, 20, 20, 0.5), rgba(20, 20, 20, 0.5)),
+    url('~assets/images/main-bg.jpg'); */
+  background: url('~assets/images/2-2.png');
+}
+
+.mContain {
+  width: 750px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.mTitle {
+  padding-top: 73px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.5px;
+  color: #151515;
+}
+
+.mDesc {
+  margin-top: 16px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  line-height: 1.71;
+  letter-spacing: -0.11px;
+  color: #151515;
+}
+
+.mBtnBox {
+  margin-top: 34px;
 }
 
 .mainSubTitle {
@@ -65,7 +102,6 @@
 }
 
 .flatBtn {
-  margin-left: 8px;
   width: 196px;
   height: 50px;
   border-radius: 5px;

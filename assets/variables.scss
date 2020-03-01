@@ -5,9 +5,51 @@
 
 $azure : #7823e6;
 
+//margin
+.MT5 {
+    margin-top: 5px;
+}
+
+.MT8 {
+    margin-top: 8px;
+}
+
+.MT30 {
+    margin-top: 30px;
+}
+
+.MT40 {
+    margin-top: 40px;
+}
+
+.MT62 {
+    margin-top: 62px;
+}
+
+.ML4 {
+    margin-left: 4px;
+}
+
+.ML8 {
+    margin-left: 8px;
+}
+
+.PT48 {
+    padding-top: 48px;
+}
+
+.PT85 {
+    padding-top: 85px;
+}
+
+.PB165 {
+    padding-bottom: 165px;
+}
+
 a {
     text-decoration: none;
     color: black;
+    font-size: 14px;
 }
 
 button {

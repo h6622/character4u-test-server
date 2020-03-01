@@ -19,7 +19,7 @@
       <main-win-card class="marginLeft" />
     </div>
     <div class="btnMargin">
-      <button class="mainWinBtn">모든 공모전 보기</button>
+      <button class="mainWinBtn">더 많은 공모전 우승작 보기</button>
     </div>
   </div>
 </template>

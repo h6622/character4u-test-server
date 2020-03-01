@@ -3,6 +3,7 @@
     <main-title />
     <main-Recent />
     <main-how />
+    <main-create />
     <main-win />
   </div>
 </template>
@@ -11,6 +12,7 @@
 import MainTitle from '@/components/main/MainTitle'
 import MainRecent from '@/components/main/MainRecent'
 import MainHow from '@/components/main/MainHow'
+import MainCreate from '@/components/main/MainCreate'
 import MainWin from '@/components/main/MainWin'
 
 export default {
@@ -18,6 +20,7 @@ export default {
     MainTitle,
     MainRecent,
     MainHow,
+    MainCreate,
     MainWin
   }
 }
