@@ -109,7 +109,6 @@ export default {
   background-size: cover;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 12px;
-  font-weight: bold;
   color: white;
   display: flex;
   justify-content: center;
@@ -121,7 +120,6 @@ export default {
   height: 24px;
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 12px;
-  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;

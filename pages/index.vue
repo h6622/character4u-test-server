@@ -5,6 +5,7 @@
     <main-how />
     <main-create />
     <main-win />
+    <main-card class="mCard" />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import MainRecent from '@/components/main/MainRecent'
 import MainHow from '@/components/main/MainHow'
 import MainCreate from '@/components/main/MainCreate'
 import MainWin from '@/components/main/MainWin'
+import MainCard from '@/components/main/MainCard'
 
 export default {
   components: {
@@ -21,7 +23,8 @@ export default {
     MainRecent,
     MainHow,
     MainCreate,
-    MainWin
+    MainWin,
+    MainCard
   }
 }
 </script>
@@ -29,5 +32,11 @@ export default {
 <style lang="scss" scoped>
 .containerWidth {
   width: 100%;
+}
+
+.mCard {
+  position: fixed;
+  left: 1417px;
+  top: 300px;
 }
 </style>

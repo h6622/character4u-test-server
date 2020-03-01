@@ -44,6 +44,7 @@
   color: $azure;
   padding: 19px 40px;
   border-radius: 5px;
+  border: 2px solid white;
   box-shadow: 4px 2px 20px 0 rgba(33, 37, 41, 0.3);
   background-color: white;
 }
