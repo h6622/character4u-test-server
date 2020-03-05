@@ -18,49 +18,12 @@
       <div class="term d-flex justify-center boardFont FW500">기간</div>
       <div class="save d-flex justify-center boardFont FW500">저장</div>
     </div>
-    <div v-for="i in items" :key="i.index" class="boardContent d-flex">
-      <div class="logo d-flex justify-center align-center">
-        <div class="comLogo" />
-      </div>
-      <div class="company d-flex justify-center boardFont align-center">
-        에이프릴스톤
-      </div>
-      <div class="comTitle d-flex justify-center align-center boardFont CBlack">
-        <nuxt-link to="/detail" class="ctText">
-          [공기업/기관] ‘토스터기 형태의 무선충전+살균기’ 제품 디자인 공모전…
-        </nuxt-link>
-      </div>
-      <div class="views d-flex justify-center align-center boardFont">
-        {1,000}
-      </div>
-      <div class="part d-flex justify-center align-center boardFont">
-        {1,000}
-      </div>
-      <div class="reward d-flex justify-center align-center boardFont">
-        {1천만원}
-      </div>
-      <div
-        class="term d-flex flex-column justify-center align-center boardFont"
-      >
-        <div class="CGreen">진행중</div>
-        <div class="smFont">1차선정중</div>
-      </div>
-      <div class="save d-flex justify-center align-center">
-        <svg
-          @click="onClickIcon(i.index)"
-          xmlns="http://www.w3.org/2000/svg"
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
-        >
-          <path
-            :fill="i.clicked"
-            fill-rule="evenodd"
-            d="M8.5 14.096L3.247 17l1.003-6.15L0 6.492l5.873-.897L8.5 0l2.627 5.596L17 6.493l-4.25 4.356L13.753 17z"
-          />
-        </svg>
-      </div>
-    </div>
+    <list-form
+      v-for="i in lists"
+      :key="i.index"
+      :index="i.index"
+      :clicked="i.clicked"
+    />
     <div class="carousel d-flex justify-center">
       <page-component />
     </div>
@@ -69,33 +32,16 @@
 
 <script>
 import PageComponent from '@/components/PageComponent'
+import ListForm from '@/components/lists/ListForm'
 
 export default {
   components: {
-    PageComponent
+    PageComponent,
+    ListForm
   },
-  data() {
-    return {
-      items: [
-        { index: 0, clicked: '#F0F0F0' },
-        { index: 1, clicked: '#F0F0F0' },
-        { index: 2, clicked: '#F0F0F0' },
-        { index: 3, clicked: '#F0F0F0' },
-        { index: 4, clicked: '#F0F0F0' },
-        { index: 5, clicked: '#F0F0F0' },
-        { index: 6, clicked: '#F0F0F0' },
-        { index: 7, clicked: '#F0F0F0' },
-        { index: 8, clicked: '#F0F0F0' }
-      ]
-    }
-  },
-  methods: {
-    onClickIcon(i) {
-      if (this.items[i].clicked === '#F0F0F0') {
-        this.items[i].clicked = '#8241fa'
-      } else {
-        this.items[i].clicked = '#F0F0F0'
-      }
+  computed: {
+    lists() {
+      return this.$store.state.lists.lists
     }
   }
 }
@@ -130,11 +76,6 @@ export default {
   height: 60px;
   background-color: #f8f8f8;
   border-top: solid 2px #979797;
-}
-
-.boardContent {
-  width: 100%;
-  height: 83px;
 }
 
 .logo {
@@ -214,5 +155,9 @@ export default {
 
 .ctText:hover {
   color: $azure;
+}
+
+.iHighlight {
+  color: red;
 }
 </style>

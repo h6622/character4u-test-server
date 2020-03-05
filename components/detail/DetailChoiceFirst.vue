@@ -6,88 +6,28 @@
         1차 통과작을 선택해주세요. ({{ passFirst }} / 3) {{ warning }}
       </div>
       <div class="d-flex justify-end MB16">
-        <a @click="onClick" class="vBtn">1차 통과 선정 완료 </a>
+        <a class="vBtn">1차 통과 선정 완료 </a>
       </div>
-      <div class="d-flex justify-space-between MB16">
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy1.png" class="dImg" />
-            <div
-              @click="onClickChoice"
-              :class="choiced ? 'choiced' : ''"
-              class="circle"
+      <div
+        v-for="i in items"
+        :key="i.index"
+        class="d-flex justify-space-between MB16"
+      >
+        <div v-for="j in i.images" :key="j.index" class="imgBox">
+          <div @click="onClick(i.index, j.index, j.selected)">
+            <img
+              v-if="!j.selected"
+              src="~assets/images/deselected.png"
+              class="selected"
             />
+            <img v-else src="~assets/images/selected.png" class="selected" />
           </div>
-          <div class="vNick">유니블루(yooniblue)</div>
-        </div>
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy2.png" class="dImg" />
-            <div
-              @click="onClickChoice2"
-              :class="choiced2 ? 'choiced' : ''"
-              class="circle"
-            />
-          </div>
-          <div class="vNick">캐포유(yoon****)</div>
-        </div>
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy3.png" class="dImg" />
-            <div
-              @click="onClickChoice3"
-              :class="choiced3 ? 'choiced' : ''"
-              class="circle"
-            />
-          </div>
-          <div class="vNick">캐포유(yoon****)</div>
+
+          <img :src="j.url" class="dImg" />
+          <div class="vNick">{{ j.nick }}</div>
         </div>
       </div>
-      <div class="d-flex justify-space-between MB16">
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy4.png" class="dImg" />
-            <div
-              @click="onClickChoice4"
-              :class="choiced4 ? 'choiced' : ''"
-              class="circle"
-            />
-          </div>
-          <div class="vNick">캐포유(yoon****)</div>
-        </div>
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy5.png" class="dImg" />
-          </div>
-          <div class="vNick">캐포유(yoon****)</div>
-        </div>
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy6.png" class="dImg" />
-          </div>
-          <div class="vNick">캐포유(yoon****)</div>
-        </div>
-      </div>
-      <div class="d-flex justify-space-between MB16">
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy7.png" class="dImg" />
-          </div>
-          <div class="vNick">캐포유(yoon****)</div>
-        </div>
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy8.png" class="dImg" />
-          </div>
-          <div class="vNick">캐포유(yoon****)</div>
-        </div>
-        <div>
-          <div class="vBox">
-            <img src="~assets/images/dummy9.png" class="dImg" />
-          </div>
-          <div class="vNick">캐포유(yoon****)</div>
-        </div>
-      </div>
+
       <div class="d-flex justify-center MT50">
         <div class="vCarousel d-flex justify-space-between">
           <page-component />
@@ -115,6 +55,15 @@
 <script>
 import DetailCard from '@/components/detail/DetailCard'
 import PageComponent from '@/components/PageComponent'
+import dummy1 from '@/assets/images/dummy1.png'
+import dummy2 from '@/assets/images/dummy2.png'
+import dummy3 from '@/assets/images/dummy3.png'
+import dummy4 from '@/assets/images/dummy4.png'
+import dummy5 from '@/assets/images/dummy5.png'
+import dummy6 from '@/assets/images/dummy6.png'
+import dummy7 from '@/assets/images/dummy7.png'
+import dummy8 from '@/assets/images/dummy8.png'
+import dummy9 from '@/assets/images/dummy9.png'
 
 export default {
   components: {
@@ -125,65 +74,70 @@ export default {
     return {
       passFirst: 0,
       checked: false,
-      checked2: false,
-      checked3: false,
-      checked4: false
+      items: [
+        {
+          index: 0,
+          images: [
+            {
+              index: 0,
+              url: dummy1,
+              nick: '유니블루 (yoon****)',
+              selected: false
+            },
+            {
+              index: 1,
+              url: dummy2,
+              nick: '캐포유(yoon****)',
+              selected: false
+            },
+            { index: 2, url: dummy3, nick: '캐포유(yoon****)', selected: false }
+          ]
+        },
+        {
+          index: 1,
+          images: [
+            {
+              index: 0,
+              url: dummy4,
+              nick: '캐포유(yoon****)',
+              selected: false
+            },
+            {
+              index: 1,
+              url: dummy5,
+              nick: '캐포유(yoon****)',
+              selected: false
+            },
+            { index: 2, url: dummy6, nick: '캐포유(yoon****)', selected: false }
+          ]
+        },
+        {
+          index: 2,
+          images: [
+            {
+              index: 0,
+              url: dummy7,
+              nick: '캐포유(yoon****)',
+              selected: false
+            },
+            {
+              index: 1,
+              url: dummy8,
+              nick: '캐포유(yoon****)',
+              selected: false
+            },
+            { index: 2, url: dummy9, nick: '캐포유(yoon****)', selected: false }
+          ]
+        }
+      ]
     }
   },
   methods: {
-    onClick() {
-      this.$store.commit('detail/choice')
-    },
-    onClickChoice() {
-      if (!this.checked && this.passFirst < 3) {
-        this.choiced = 'choiced'
-        this.checked = true
-        this.passFirst++
-      } else if (!this.checked && this.passFirst >= 3) {
-        this.warning = '3개를 초과 할 수 없습니다.'
-      } else if (this.checked) {
-        this.choiced = ''
-        this.checked = false
-        this.passFirst--
-      }
-    },
-    onClickChoice2() {
-      if (!this.checked2 && this.passFirst < 3) {
-        this.choiced2 = 'choiced'
-        this.checked2 = true
-        this.passFirst++
-      } else if (!this.checked2 && this.passFirst >= 3) {
-        this.warning = '3개를 초과 할 수 없습니다.'
-      } else if (this.checked2) {
-        this.choiced2 = ''
-        this.checked2 = false
-        this.passFirst--
-      }
-    },
-    onClickChoice3() {
-      if (!this.checked3 && this.passFirst < 3) {
-        this.choiced3 = 'choiced'
-        this.checked3 = true
-        this.passFirst++
-      } else if (!this.checked3 && this.passFirst >= 3) {
-        this.warning = '3개를 초과 할 수 없습니다.'
-      } else if (this.checked3) {
-        this.choiced3 = ''
-        this.checked3 = false
-        this.passFirst--
-      }
-    },
-    onClickChoice4() {
-      if (!this.checked4 && this.passFirst < 3) {
-        this.choiced4 = 'choiced'
-        this.checked4 = true
-        this.passFirst++
-      } else if (!this.checked4 && this.passFirst >= 3) {
-        this.warning = '3개를 초과 할 수 없습니다.'
-      } else if (this.checked4) {
-        this.choiced4 = ''
-        this.checked4 = false
-        this.passFirst--
+    onClick(i, j, sel) {
+      if (sel) {
+        this.items[i].images[j].selected = false
+      } else {
+        this.items[i].images[j].selected = true
       }
     }
   }
@@ -196,6 +150,21 @@ export default {
   left: 0;
   right: 0;
   margin: 0 auto;
+}
+
+.imgBox {
+  position: relative;
+}
+
+.dImg {
+  width: 190px;
+  height: 184px;
+}
+
+.selected {
+  position: absolute;
+  right: 0;
+  margin: 8px;
 }
 
 .MT40 {
@@ -238,7 +207,6 @@ export default {
   font-size: 12px;
   line-height: 1.33;
   color: #222222;
-  margin-top: 4px;
 }
 
 .vCarousel {
@@ -296,12 +264,6 @@ export default {
 
 ::placeholder {
   color: #c5c5c5;
-}
-
-.dImg {
-  width: 100%;
-  border-radius: 5px;
-  border: 2px solid #d8d8d8;
 }
 
 .circle {
